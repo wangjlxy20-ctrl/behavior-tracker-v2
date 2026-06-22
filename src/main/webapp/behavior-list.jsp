@@ -37,6 +37,26 @@
 
 <h1>Behavior Record List</h1>
 
+<h3>Add New Record</h3>
+
+<form action="${pageContext.request.contextPath}/behavior/list" method="post">
+
+    Type:
+    <input type="text" name="type" required>
+
+    <br><br>
+
+    Value:
+    <input type="number" name="value" required>
+
+    <br><br>
+
+    <button type="submit">Add</button>
+
+</form>
+
+<hr>
+
 <table>
 
     <tr>
