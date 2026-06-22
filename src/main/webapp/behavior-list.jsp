@@ -65,6 +65,7 @@
         <th>Type</th>
         <th>Value</th>
         <th>Create_Time</th>
+        <th>Operation</th>
     </tr>
 
     <%
@@ -81,6 +82,18 @@
         <td><%= item.getType() %></td>
         <td><%= item.getValue() %></td>
         <td><%= item.getCreate_time() %></td>
+
+        <td>
+            <a href="<%= request.getContextPath() %>/behavior/edit?id=<%= item.getId() %>">
+                Edit
+            </a>
+
+            |
+
+            <a href="<%= request.getContextPath() %>/behavior/delete?id=<%= item.getId() %>">
+                Delete
+            </a>
+        </td>
     </tr>
 
     <%
