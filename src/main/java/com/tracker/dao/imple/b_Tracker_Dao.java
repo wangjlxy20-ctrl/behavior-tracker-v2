@@ -9,6 +9,7 @@ public interface b_Tracker_Dao {
     boolean isUsernameExist(String username);
     boolean password_verification(String password,String password_verification);
     boolean login(String username,String password);
+    my_users getUserByUsername(String username);
     //Function model
     int insertRecord(int userID,String type,int value);
     int showRecordByType(int user_id,String type);

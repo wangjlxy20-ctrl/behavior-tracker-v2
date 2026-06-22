@@ -47,6 +47,11 @@ public class b_Tracker_ServiceImple implements b_Tracker_Service{
     }
 
     @Override
+    public my_users getUserByUsername(String username) {
+        return bTrackerDao.getUserByUsername(username);
+    }
+
+    @Override
     public void showRecordByType(int user_id, String type) {
         int count = bTrackerDao.showRecordByType(user_id,type);
         if(count >= 0){

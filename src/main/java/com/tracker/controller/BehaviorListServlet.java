@@ -22,7 +22,22 @@ public class BehaviorListServlet extends HttpServlet {
                          HttpServletResponse response)
             throws ServletException, IOException {
 
-        List<Type> list = service.getAllRecords(1);
+        HttpSession session =
+                request.getSession();
+
+        Integer userId =
+                (Integer) session.getAttribute("userId");
+
+        // Login Verification
+        if(userId == null){
+            response.sendRedirect(
+                    request.getContextPath()
+                            + "/login.jsp");
+            return;
+        }
+
+        List<Type> list =
+                service.getAllRecords(userId);
 
         request.setAttribute("list", list);
 
@@ -43,8 +58,24 @@ public class BehaviorListServlet extends HttpServlet {
                 Integer.parseInt(
                         request.getParameter("value"));
 
-        int result =
-                service.insertRecord(1, type, value);
+        HttpSession session =
+                request.getSession();
+
+        Integer userId =
+                (Integer)session.getAttribute("userId");
+
+        //Login Verification
+        if(userId == null){
+            response.sendRedirect(
+                    request.getContextPath()
+                            + "/login.jsp");
+            return;
+        }
+
+        service.insertRecord(
+                userId,
+                type,
+                value);
 
         response.sendRedirect(
                 request.getContextPath()

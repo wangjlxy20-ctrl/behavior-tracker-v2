@@ -83,6 +83,43 @@ public class b_Tracker_Dao_Imple implements b_Tracker_Dao{
     }
 
     @Override
+    public my_users getUserByUsername(String username) {
+
+        try {
+            connection = jdbc_util.getConn();
+
+            String sql =
+                    "select * from my_users where users_name = ?";
+
+            preparedStatement =
+                    connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, username);
+
+            resultSet = preparedStatement.executeQuery();
+
+            if(resultSet.next()){
+
+                my_users user = new my_users();
+
+                user.setUser_id(resultSet.getInt("id"));
+                user.setUsername(
+                        resultSet.getString("users_name"));
+
+                user.setPassword(
+                        resultSet.getString("pass_word"));
+
+                return user;
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return null;
+    }
+
+    @Override
     public int insertRecord(int userID, String type, int value) {
         try {
             connection = jdbc_util.getConn();

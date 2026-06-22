@@ -35,8 +35,24 @@
 
 <body>
 
-<h1>Behavior Record List</h1>
 
+
+<h1>Behavior Record List</h1>
+<h2>
+    Welcome,
+    <%= session.getAttribute("username") %>
+</h2>
+
+<a href="${pageContext.request.contextPath}/logout">
+    Logout
+</a>
+
+<hr>
+
+<h3>
+    User ID:
+    <%= session.getAttribute("userId") %>
+</h3>
 <h3>Add New Record</h3>
 
 <form action="${pageContext.request.contextPath}/behavior/list" method="post">
