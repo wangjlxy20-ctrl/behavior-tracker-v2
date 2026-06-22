@@ -1,23 +1,32 @@
 package com.tracker.controller;
 
+import com.tracker.pojo.Type;
+import com.tracker.service.b_Tracker_Service;
+import com.tracker.service.b_Tracker_ServiceImple;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/behavior/list")
 public class BehaviorListServlet extends HttpServlet {
+
+    private final b_Tracker_Service service =
+            new b_Tracker_ServiceImple();
 
     @Override
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response)
             throws ServletException, IOException {
 
-        response.setContentType("text/html;charset=UTF-8");
+        List<Type> list = service.getAllRecords(1);
 
-        response.getWriter().println("<h1>Servlet is running successful!</h1>");
+        request.setAttribute("list", list);
 
-        System.out.println("BehaviorListServlet执行了");
+        request.getRequestDispatcher("/behavior-list.jsp")
+                .forward(request, response);
     }
 }
