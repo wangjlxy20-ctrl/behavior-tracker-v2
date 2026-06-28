@@ -18,7 +18,7 @@ This project was built as a practice project for learning Java Web development, 
 * User Login
 * Session Authentication
 * Logout
-
+* Login Authentication Filter
 ### Behavior Management Module
 
 * Add Behavior Record
